@@ -81,7 +81,7 @@ This project was my real-world classroom. Key skills gained:
 ## 👨‍💻 Developer
 
 **Jamshaid Khan Niazi**
-BS Computer Science — PIEAS, Islamabad (2028)
+BS Computer Science — PIEAS, Islamabad (2029)
 🏷️ Founder, Niazi Tech
 
 [![GitHub](https://img.shields.io/badge/GitHub-jamshaidkhanniazi5965--ship--it-black?style=flat&logo=github)](https://github.com/jamshaidkhanniazi5965-ship-it)
