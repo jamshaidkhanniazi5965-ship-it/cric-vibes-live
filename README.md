@@ -32,6 +32,8 @@ Built as an independent project by a second-semester BS Computer Science student
 | 📰 **Cricket News** | Latest cricket news from around the globe |
 | 📅 **Match Schedule** | Upcoming international events and match fixtures |
 | ⚖️ **Player Comparison** | Compare any two players side by side across all formats |
+| 🎬 **Match Highlights** | Fresh cricket highlight clips from official boards & leagues, updated in near real-time |
+| 📊 **Cricket Analysis** | Interviews, expert commentary & match analysis from top cricket channels |
 
 ### 📴 Offline Features
 | Feature | Description |
@@ -47,6 +49,7 @@ Built as an independent project by a second-semester BS Computer Science student
 | **Firebase** | Authentication, Cloud Functions, Secret Manager |
 | **Firestore** | Real-time database & user data storage |
 | **REST API (RapidAPI)** | Live scores, rankings & player data |
+| **YouTube Data API** | Match highlights & cricket analysis videos |
 | **FCM** | Push notifications for match updates |
 | **Git & GitHub** | Version control |
 | **Android Studio** | Development environment |
