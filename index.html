@@ -13,26 +13,54 @@
   a.btn{display:block;background:#01875f;color:#fff;text-decoration:none;font-weight:700;
         font-size:18px;padding:16px;border-radius:12px;margin-bottom:12px}
   small{color:#8a9a90}
+  #inapp{display:none}
+  .arrow{position:fixed;top:4px;right:18px;font-size:44px;line-height:1;color:#3ddc84;
+         animation:bob 1s ease-in-out infinite alternate}
+  @keyframes bob{to{transform:translateY(8px)}}
+  .steps{background:#1b2a21;border-radius:12px;padding:16px;text-align:left;font-size:17px;line-height:1.6;margin-bottom:16px}
+  .steps b{color:#3ddc84}
 </style>
 </head>
 <body>
 <div class="box">
   <h1>Cric Vibes Live</h1>
   <p>Live scores, rankings and player stats</p>
-  <a class="btn" id="open" href="#">Open in Play Store</a>
-  <small>Not opening? Tap ⋯ at the top and choose “Open in browser”.</small>
+
+  <div id="normal">
+    <a class="btn" id="open" href="#">Open in Play Store</a>
+    <small>Not opening? Tap ⋯ at the top and choose “Open in browser”.</small>
+  </div>
+
+  <div id="inapp">
+    <div class="arrow">↑</div>
+    <div class="steps">
+      To install the app:<br>
+      1. Tap <b>⋯</b> at the top right<br>
+      2. Tap <b>Open in browser</b><br>
+      3. The Play Store opens automatically
+    </div>
+    <small>TikTok doesn’t let links open the Play Store directly.</small>
+  </div>
 </div>
 <script>
   // Play Store package name of Cric Vibes Live
   var PKG = "com.niazicricket.app";
   var web = "https://play.google.com/store/apps/details?id=" + PKG;
-  var isAndroid = /android/i.test(navigator.userAgent);
+  var ua = navigator.userAgent;
+  var isAndroid = /android/i.test(ua);
+  // In-app browsers (TikTok, Instagram, Facebook) block links that open other apps
+  var inApp = /musical_ly|trill|bytedance|tiktok|instagram|FBAN|FBAV/i.test(ua);
   var link = isAndroid
     ? "intent://details?id=" + PKG + "#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=" + encodeURIComponent(web) + ";end"
     : web;
-  document.getElementById("open").href = link;
-  // Try automatically; if the in-app browser blocks it, the button tap still works
-  if (isAndroid) setTimeout(function(){ location.href = link; }, 300);
+
+  if (isAndroid && inApp) {
+    document.getElementById("normal").style.display = "none";
+    document.getElementById("inapp").style.display = "block";
+  } else {
+    document.getElementById("open").href = link;
+    if (isAndroid) setTimeout(function(){ location.href = link; }, 300);
+  }
 </script>
 </body>
 </html>
