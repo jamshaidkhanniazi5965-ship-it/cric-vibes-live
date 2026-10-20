@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cric Vibes Live – Download</title>
+<style>
+  body{margin:0;font-family:system-ui,sans-serif;background:#0f1a14;color:#fff;
+       display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center}
+  .box{padding:24px;max-width:360px}
+  h1{font-size:26px;margin:0 0 8px}
+  p{color:#b8c7bd;margin:0 0 24px}
+  a.btn{display:block;background:#01875f;color:#fff;text-decoration:none;font-weight:700;
+        font-size:18px;padding:16px;border-radius:12px;margin-bottom:12px}
+  small{color:#8a9a90}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Cric Vibes Live</h1>
+  <p>Live scores, rankings and player stats</p>
+  <a class="btn" id="open" href="#">Open in Play Store</a>
+  <small>Not opening? Tap ⋯ at the top and choose “Open in browser”.</small>
+</div>
+<script>
+  // Play Store package name of Cric Vibes Live
+  var PKG = "com.niazicricket.app";
+  var web = "https://play.google.com/store/apps/details?id=" + PKG;
+  var isAndroid = /android/i.test(navigator.userAgent);
+  var link = isAndroid
+    ? "intent://details?id=" + PKG + "#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=" + encodeURIComponent(web) + ";end"
+    : web;
+  document.getElementById("open").href = link;
+  // Try automatically; if the in-app browser blocks it, the button tap still works
+  if (isAndroid) setTimeout(function(){ location.href = link; }, 300);
+</script>
+</body>
+</html>
