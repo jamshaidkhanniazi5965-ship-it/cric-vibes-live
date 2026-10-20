@@ -49,17 +49,28 @@
   var ua = navigator.userAgent;
   var isAndroid = /android/i.test(ua);
   // In-app browsers (TikTok, Instagram, Facebook) block links that open other apps
-  var inApp = /musical_ly|trill|bytedance|tiktok|instagram|FBAN|FBAV/i.test(ua);
+  var inApp = /musical_ly|trill|bytedance|bytelocale|tiktok|aweme|instagram|FBAN|FBAV|; wv\)/i.test(ua);
   var link = isAndroid
     ? "intent://details?id=" + PKG + "#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=" + encodeURIComponent(web) + ";end"
     : web;
 
-  if (isAndroid && inApp) {
+  function showSteps() {
     document.getElementById("normal").style.display = "none";
     document.getElementById("inapp").style.display = "block";
+  }
+  // If the Play Store didn't open, this page is still on screen, so show the steps
+  function tryOpen() {
+    location.href = link;
+    if (isAndroid) setTimeout(function(){ if (!document.hidden) showSteps(); }, 1500);
+  }
+
+  if (isAndroid && inApp) {
+    showSteps();
   } else {
-    document.getElementById("open").href = link;
-    if (isAndroid) setTimeout(function(){ location.href = link; }, 300);
+    var btn = document.getElementById("open");
+    btn.href = link;
+    btn.addEventListener("click", function(e){ e.preventDefault(); tryOpen(); });
+    if (isAndroid) setTimeout(tryOpen, 300);
   }
 </script>
 </body>
